@@ -14,7 +14,6 @@ export default function Timer(props) {
     }
     return (
         <div className="title" >
-            {console.log(props.bestTime)}
             {props.bestTime > 0 && <h1 style={{ fontSize: "25px" }}>BEST TIME: {bestMin < 10 ? 0 : ''}{bestMin} : {bestSec - bestMin * 60 < 10 ? 0 : ''}{bestSec - bestMin * 60} : 0{props.bestTime - bestSec * 10}</h1>}
             <div style={styles}>{min < 10 ? 0 : ''}{min} : {sec - min * 60 < 10 ? 0 : ''}{sec - min * 60} : 0{props.curTime - sec * 10}</div>
         </div>
