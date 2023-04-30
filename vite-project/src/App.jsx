@@ -19,7 +19,6 @@ function App() {
     const checkHeld = dice.filter(it => it.isHeld)
     const checkDice = dice.reduce((acc, rec) => { return acc + rec.value }, 0)
     if ((checkHeld.length > 9) && (checkDice % 10 === 0)) {
-
       setStartGame(false)
       if (bestTime[0] > 1) {
         setBestTime((prevTime) => {
@@ -36,12 +35,13 @@ function App() {
       }
       setTenzies(true)
       setBestTime((prevItem) => prevItem.sort((a, b) => (a - b)))
-      localStorage.setItem("record", JSON.stringify(bestTime))
     }
   },
     [dice])
 
   React.useEffect(() => {
+    console.log(`SAVE SCORE ${bestTime}`)
+    localStorage.setItem("record", JSON.stringify(bestTime))
     let start = Date.now()
     const refresh = startGame && setInterval(function () {
       let delta = Date.now() - start
@@ -54,7 +54,7 @@ function App() {
 
   function generateNewDice() {
     return {
-      value: Math.ceil(Math.random() * 6),
+      value: Math.ceil(Math.random() * 1),
       isHeld: false,
       id: nanoid()
     }
@@ -65,11 +65,9 @@ function App() {
       .fill(null)
       .map(() => {
         return generateNewDice()
-
       })
     return randomNum
   }
-
 
   const resetRating = () => {
     localStorage.removeItem("record")

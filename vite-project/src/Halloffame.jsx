@@ -1,6 +1,4 @@
 export default function Halloffame(props) {
-    // let bestSec = Math.floor(rating / 10)
-    // let bestMin = Math.floor(bestSec / 60)
     props.rating.length > 5 && props.rating.pop()
     const ratingElements = props.rating.map(
         (it, index) =>
