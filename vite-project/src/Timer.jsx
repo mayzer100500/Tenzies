@@ -9,11 +9,13 @@ export default function Timer(props) {
         fontSize: "30px",
         fontWeight: "700",
         marginBottom: "15px",
-        border: "solid"
+        border: "solid",
+        width: "300px"
     }
     return (
         <div className="title" >
-            <h1 style={{ fontSize: "25px" }}>BEST TIME: {bestMin < 10 ? 0 : ''}{bestMin} : {bestSec - bestMin * 60 < 10 ? 0 : ''}{bestSec - bestMin * 60} : 0{props.bestTime - bestSec * 10}</h1>
+            {console.log(props.bestTime)}
+            {props.bestTime > 0 && <h1 style={{ fontSize: "25px" }}>BEST TIME: {bestMin < 10 ? 0 : ''}{bestMin} : {bestSec - bestMin * 60 < 10 ? 0 : ''}{bestSec - bestMin * 60} : 0{props.bestTime - bestSec * 10}</h1>}
             <div style={styles}>{min < 10 ? 0 : ''}{min} : {sec - min * 60 < 10 ? 0 : ''}{sec - min * 60} : 0{props.curTime - sec * 10}</div>
         </div>
     )

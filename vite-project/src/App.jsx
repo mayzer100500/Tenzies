@@ -74,6 +74,7 @@ function App() {
   const resetRating = () => {
     localStorage.removeItem("record")
     setBestTime([0])
+    setTime(0)
   }
 
   const rollDice = () => {
@@ -87,10 +88,12 @@ function App() {
   }
 
   function holdDice(id) {
-    setStartGame(true)
-    setDice(() => dice.map(it => {
-      return it.id === id ? { ...it, isHeld: !it.isHeld } : it
-    }))
+    if (!tenzies) {
+      setStartGame(true)
+      setDice(() => dice.map(it => {
+        return it.id === id ? { ...it, isHeld: !it.isHeld } : it
+      }))
+    }
   }
 
   return (
